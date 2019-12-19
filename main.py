@@ -39,7 +39,7 @@ class SparkWindow(Gtk.ApplicationWindow,
 		super().__init__()
 		self.id = {}
 		self.files_dir()
-		self.log = Logging(name= self.get_title(), leval = 'DEBUG' ,logger_type = 'both', log_file=self.log_file, state=True)
+		self.log = Logging(name= self.get_title(), leval = 'DEBUG' ,logger_type = 'both', log_file=self.log_file, state=False)
 		self.cfg = Config(self.config_file)
 
 	def spark(self):
