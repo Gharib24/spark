@@ -44,7 +44,7 @@ d-i netcfg/wireless_essid_again string
 d-i netcfg/wireless_wep string
 d-i netcfg/wireless_wpa string
 
-d-i netcfg/disable_autoconfig string
+d-i netcfg/disable_dhcp boolean
 d-i netcfg/confirm_static boolean
 
 ### IPv4

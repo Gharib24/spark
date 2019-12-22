@@ -102,8 +102,8 @@ class SaveToFile:
 		with open(file , 'a') as a: # XXX writ to file
 			for i in range(len(datastore)):
 				if len(datastore[i]) == 4:
-					line = (datastore[i][0], datastore[i][1], datastore[i][2],datastore[i][3])
-					line = ' '.join(line)
+					line = (datastore[i][0], datastore[i][1], datastore[i][2], datastore[i][3])
+					line = ' '.join(line).rstrip()
 					a.write(line+'\n')
 					saved +=1
 			a.close()	

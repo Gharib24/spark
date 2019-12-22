@@ -84,9 +84,6 @@ xorriso -as mkisofs -quiet \
 
 
 loop = None
-#iso_label = None
-iso_file = None
-
 class SysCmd():
 	def __init__(self):
 		super().__init__()
@@ -113,16 +110,15 @@ class SysCmd():
 			loop = None
 
 	def __mount(self, iso_file):
-			if loop != None:
-				self.__unmount()
-			else:
-				self.__run_cmd(mount_cmd.format(iso_file), 'mount')
-				self.get_iso_label(iso_file)
+			self.__unmount()
+			self.__run_cmd(mount_cmd.format(iso_file), 'mount')
+			self.get_iso_label(iso_file)
+
 	def __unmount(self):
 		if loop != None:
 			self.__run_cmd(unmount_cmd.format(loop), 'unmount')
 
-	def __copy_mbr(self):
+	def __copy_mbr(self, iso_file):
 		with open(iso_file, 'rb') as rb, open(self.work_path+'isohdpfx.bin', 'wb') as wb:
 			isohdpfx = rb.read(432)
 			wb.write(isohdpfx)
@@ -144,19 +140,17 @@ class SysCmd():
 		self.__run_cmd(xorriso_cmd.format(pretty_label, self.work_path+filename, self.work_path+'isohdpfx.bin', mount_point, self.cd_root))
 		self.log.debug(xorriso_cmd.format(pretty_label, self.work_path+filename, self.work_path+'isohdpfx.bin', mount_point, self.cd_root))
 
-	def new_image(self, iso, filename):
-		global iso_file
-		iso_file = iso
-		if iso_file != None:
-			self.__write_boot_config_files()
-			self.__copy_mbr()
-			self.__mount(iso_file)
-			os.sync()
-			self.__xorriso(iso_file, filename)
-			os.sync()
-			self.__unmount()
-			if os.path.exists(self.work_path+'isohdpfx.bin'):
-				os.remove(self.work_path+'isohdpfx.bin')
+	def new_image(self, iso_file, filename):
+
+		self.__write_boot_config_files()
+		self.__copy_mbr(iso_file)
+		self.__mount(iso_file)
+		os.sync()
+		self.__xorriso(iso_file, filename)
+		os.sync()
+		self.__unmount()
+		if os.path.exists(self.work_path+'isohdpfx.bin'):
+			os.remove(self.work_path+'isohdpfx.bin')
 
 
 

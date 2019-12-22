@@ -16,13 +16,12 @@ class GetValue:
 							continue
 					else:
 						_line = (line.strip().split())
+						question = _line[1]
 						if len(_line) >= 4:
-							question = _line[1]
 							value = ' '.join((line.strip(' ').split()[3:]))
 							self.value[question] = value
 						elif len(_line) == 3:
-							question = _line[1]
-							value =  'none_value'
+							value = 'none_value'
 							self.value[question] = value
 				f.close
 
@@ -48,10 +47,9 @@ class Value:
 				if 'Entry' == widget_type:
 					if value =='none_value':
 						value = ' '
-					elif 'password-crypted' in i:
+					if 'password-crypted' in i:
 						widget.set_text('PASSWORD')
 						self.store_update('passwd/user-password-crypted', value)
-
 #						continue
 					else:
 						widget.set_text(value)
@@ -71,6 +69,7 @@ class Value:
 					elif i == 'apt-setup/services-select':
 						value_list = value.replace(',','').split()
 						for i in value_list:
+
 							widget = self.id.get(i)
 							widget.set_active(True)
 					elif type(value) == bool:

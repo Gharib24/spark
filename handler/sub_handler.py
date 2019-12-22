@@ -204,7 +204,7 @@ class Handler(PHandler ,RHandler, DHandler, AHandler, DataStore):
 	def on_comboboxtext_changed(self, comboboxtext, question=None):
 		text = comboboxtext.get_active_text()
 		value =  comboboxtext.get_active_id()
-		if question == 'netcfg/disable_autoconfig':
+		if question == 'netcfg/disable_dhcp':
 			self.store_update(question, value)
 			 # XXX SENSITIVE
 			list =['netcfg/get_ipaddress', 'netcfg/get_netmask', 'netcfg/get_gateway', 'netcfg/get_nameservers']
