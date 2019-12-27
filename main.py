@@ -4,7 +4,7 @@ import gi, sys
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-#sys.path.append('./')
+sys.path.append('./')
 sys.path.append('./handler')
 sys.path.append('./stack')
 #sys.path.append('./data/')
