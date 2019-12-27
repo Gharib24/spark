@@ -145,12 +145,12 @@ class Handler:
 					key = 'partman-auto/expert_recipe'
 					self.store_update(key, value)
 
-				if  emty_col != True:
-					for row in range(len(recipe)):
-						if recipe[row][2] == '/boot/efi':
-							self.store_update('partman-efi/non_efi_system', 'false')
-						else:
-							self.store_update('partman-efi/non_efi_system', 'true')
+
+					if recipe[row][2] == '/boot/efi':
+						self.store_update('partman-efi/non_efi_system', 'false')
+					else:
+						self.store_update('partman-efi/non_efi_system', 'true')
+
 		elif len(self.recipe_store)== 0:
 			self.store_update('partman-auto/choose_recipe', 'delete')
 			self.store_update('partman-auto/expert_recipe', 'delete')

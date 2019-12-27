@@ -26,8 +26,8 @@ else
 	set menu_color_highlight=white/blue
 fi
 
-insmod play
-play 960 440 1 0 4 440 1
+#insmod play
+#play 960 440 1 0 4 440 1
 set theme=/boot/grub/theme/1
 
 insmod keystatus

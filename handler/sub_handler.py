@@ -38,8 +38,9 @@ class Handler(PHandler ,RHandler, DHandler, AHandler, DataStore):
 			if question == 'netcfg/wireless_wep':
 					if self.w_comboboxtext.get_active_text() == 'wpa':
 						question = 'netcfg/wireless_wpa'
+
 			value = 'delete'
-		elif len(value) > 0:
+		if len(value) > 0:
 			if question == "passwd/user-fullname":
 #				if self.id.get('passwd/username') != None:
 				if len(value.split()) <= 1:
@@ -173,9 +174,9 @@ class Handler(PHandler ,RHandler, DHandler, AHandler, DataStore):
 			else:
 				SENSITIVE = False
 			self.id.get('netcfg/wireless_essid').set_sensitive(SENSITIVE)
-			self.id.get('netcfg/wireless_essid').set_text('')
+#			self.id.get('netcfg/wireless_essid').set_text('')
 			self.id.get('netcfg/wireless_wep').set_sensitive(SENSITIVE)
-			self.id.get('netcfg/wireless_wep').set_text('')
+#			self.id.get('netcfg/wireless_wep').set_text('')
 			self.w_comboboxtext.set_sensitive(SENSITIVE)
 
 		elif question == 'partman-auto/disk':
@@ -222,14 +223,21 @@ class Handler(PHandler ,RHandler, DHandler, AHandler, DataStore):
 
 		elif question == "netcfg/wireless_security_type":
 			self.store_update(question, value)
-			self.id.get('netcfg/wireless_wep').set_text('')
-			self.store_update('netcfg/wireless_wep', 'delete')
-			self.store_update('netcfg/wireless_wpa', 'delete')
+			key = self.id.get('netcfg/wireless_wep').get_text()
+#			self.store_update('netcfg/wireless_wep', 'delete')
+#			self.store_update('netcfg/wireless_wpa', 'delete')
+			if len(key) > 0:
+				if value == 'wpa':
+					self.store_update('netcfg/wireless_wep', 'delete')
+					self.store_update('netcfg/wireless_wpa', key)
+				elif  value == 'wep/open':
+					self.store_update('netcfg/wireless_wpa', 'delete')
+					self.store_update('netcfg/wireless_wep', key)
 
 		elif question == "partman-partitioning/default_label":
 			self.store_update(question, value)
 			for i, question in enumerate(partition_questions, 0):
-				if i <= 6:
+				if i <= 5:
 					continue
 				else:
 					if question == 'partman-auto/method':

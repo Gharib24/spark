@@ -178,8 +178,14 @@ class Value:
 #				else:
 #					print(widget_type)
 #					print(i)
+			elif i == 'netcfg/wireless_wep':
+				key = self.value.get('netcfg/wireless_wpa')
+				if key != None:
+					widget.set_text(key)
 			else:
 				continue
+
+
 
 
 		list = []
