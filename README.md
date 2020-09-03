@@ -13,5 +13,8 @@ And then to install it run.
 	sudo python3 setup.py install --install-layout=deb --install-scripts=/usr/bin/ --record file.txt
 
 Or run it without installing
+
 	./sparking
+
+
 
