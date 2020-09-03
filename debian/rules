@@ -1,0 +1,6 @@
+#!/usr/bin/make -f 
+%:
+	dh $@ --with=python3 --buildsystem=pybuild
+override_dh_auto_install: 
+	python3 setup.py install --root=debian/spark --install-layout=deb --install-scripts=/usr/bin/
+override_dh_auto_build:

@@ -1,0 +1,13 @@
+Source: spark
+Maintainer: AG <ahmad2484@email.com> 
+Section: utils 
+Priority: optional 
+Standards-Version: 4.3.0
+Build-Depends: debhelper (>= 9), python3, dh-python
+X-Python3-Version: >= 3.7.3
+
+Package: spark 
+Architecture: all 
+Depends:${misc:Depends},${python3:Depends}, python-gi, xorriso (>=1.5.0)
+Description: Graphical tool for creating preseed files, for Debian GNU/Linux.
+ Graphical tool for creating preseed files, for fully automatic installations.

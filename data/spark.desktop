@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Spark
+GenericName=Spark
+Comment=Creating a preseed file for Debian GNU/Linux
+Exec=spark
+Terminal=false
+Type=Application
+#Icon=spark
+Icon=non-starred
+Categories=GNOME;GTK;Settings;
+Keywords=Install;Automated;Custom;Preseed;Spark;
+StartupNotify=false
