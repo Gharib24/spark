@@ -1,8 +1,8 @@
-# spark
+# Spark
 A simple graphical tool for creating preseed files, for Debian GNU/Linux.
 
 
-![screenshot](screenshot.png)
+![screenshot](screenshot/screenshot.png)
 
 The program requires the xorriso install it first:
 
