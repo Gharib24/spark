@@ -1,3 +1,3 @@
 # spark
 
-![Screenshot](Screenshot.png)
+![screenshot](screenshot.png)
