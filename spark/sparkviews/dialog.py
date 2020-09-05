@@ -107,7 +107,7 @@ class Dialog(DialogHandler):
 		dialog.set_website("https://spark.com/")
 		dialog.set_website_label(f"{self.settings.APP_NAME} Website")
 		dialog.set_copyright('Copyright 2018-2020 The Spark team')
-		dialog.set_license_type(Gtk.License(2))
+		dialog.set_license_type(Gtk.License(3))
 		dialog.connect('response', self.on_destroy_dialog)
 		dialog.show_all()
 

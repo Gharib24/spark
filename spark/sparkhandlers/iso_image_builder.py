@@ -98,7 +98,7 @@ class IsoImageBuilder:
 
 	def get_iso_label(self, source_iso_file):
 		f = open(source_iso_file,'rb')
-		f.seek(0x8028,0) #from the begin Hexadecimal 0X8028 = 32808
+		f.seek(0x8028, 0) #from the begin Hexadecimal 0X8028 = 32808
 		iso_label = (f.read(32).decode("utf-8").strip())
 		f.close()
 		return iso_label

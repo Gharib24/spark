@@ -17,4 +17,7 @@ Or run Spark without installing:
 	./sparking
 
 
-
+dev=/dev/sdb
+sudo fdisk -l "$dev" | sed -ne '/^\//s,\(^[^ ]*\) .*,\1,p' | while read part
+do dd "if=$part" "of=$(basename "$part")"
+done
