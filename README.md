@@ -2,7 +2,7 @@
 A simple graphical tool for creating preseed files, for Debian GNU/Linux.
 
 
-![screenshot](screenshot/screenshot.png)
+![screenshot](screenshot/screenshot1.png)
 
 The program requires the xorriso, install xorriso first:
 
