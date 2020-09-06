@@ -81,21 +81,26 @@ class Handler():
 			else:
 #				nevar break
 				break
-		unsaved = f'{new_counter + update_counter} field unsaved '
-		changed = f'{update_counter} field changed '
-		deleted = f'{delete_counter} field deleted '
+				
+		def s_field(field):
+			if field >= 2:
+				return 'fields'
+			else:
+				return 'field'
+		
+		field = s_field(new_counter + update_counter)
+		unsaved = f'{new_counter + update_counter} {field} unsaved '
+		field = s_field(update_counter)
+		changed = f'{update_counter} {field} changed '
+		field = s_field(delete_counter)
+		deleted = f'{delete_counter} {field} deleted '
 		context = ''
+		
 		if new_counter > 0:
-			if new_counter  >= 2:
-				unsaved = unsaved.replace('field', 'fields')
 			context += unsaved
 		if update_counter > 0:
-			if new_counter >= 2:
-				changed = changed.replace('field', 'fields')
 			context += changed
 		if delete_counter > 0:
-			if new_counter >= 2:
-				deleted = deleted.replace('field', 'fields')
 			context += deleted
 
 		total = update_counter + new_counter + delete_counter

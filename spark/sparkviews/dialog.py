@@ -13,9 +13,15 @@ class Dialog(DialogHandler):
 	def get_dialog_content(self, name, data=None):
 		file_href = (f"<a href='file://{data}'>file: {data}</a>",)
 		saved = ('Saved Successfully',)
-		load_values = ('Load Values', 'Load values from last session')
+		load_values = ('Load fields values', 'Load fields values from last session')
 		save_preseed = save_pre_script = save_post_script = saved + file_href
-		save_entered = ('Save Entered', f'Save entered data? \n{self.count_answered_question()} field(s) unsaved')
+		def s_field(field):
+			if field >= 2:
+				return 'fields'
+			else:
+				return 'field'
+		field = s_field(self.count_answered_question())
+		save_entered = ('Save entered data?', f'{self.count_answered_question()} {field} unsaved')
 		iso_file_done = ('Done',) + file_href
 		error = ("Error!", 'failed successfully')
 		error_xorriso = ("Error!", 'The required dependency xorriso is not installed.\ntry: apt-get install xorriso')
